@@ -2,6 +2,10 @@
 	<h2 class="text-info">Add Category</h2>
 	<hr>
 </div>
+<div class="toaster_position">
+	<toaster-container toaster-options="{'time-out': 10000}"></toaster-container>
+</div>
+
 
 
 <div class="card1 col-lg-5">
@@ -16,7 +20,7 @@
 
 	    
 	    <div style="padding-left:4%;padding-right:4%">
-	    	<button type="button" class="btn btn-primary" ng-disabled="category_form.$invalid" style="width:100%">Add Category</button>
+	    	<button type="button" class="btn btn-primary" ng-click="add_category(category_form)" ng-disabled="category_form.$invalid" style="width:100%">Add Category</button>
 	    </div>  
 	</div>
 </div><!-- Card -->

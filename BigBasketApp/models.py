@@ -17,6 +17,7 @@ from django.contrib.auth.hashers import (
     check_password, is_password_usable, make_password,
 )
 from django.conf import settings
+from django.utils import timezone
 # Create your models here.
 
 class MyUserManager(BaseUserManager):
@@ -102,20 +103,20 @@ class User(AbstractBaseUser, PermissionsMixin, models.Model):
 
 class Category(models.Model):
 	name=models.CharField(max_length=64,null=False,blank=True)
-	is_active = models.BooleanField(default=False)
+	is_active = models.BooleanField(default=True)
 
 class Subcategory(models.Model):
 	name=models.CharField(max_length=255,null=False,blank=True)
-	is_active=models.BooleanField(default=False)
+	is_active=models.BooleanField(default=True)
 	fk_category=models.ForeignKey('Category',null=True,blank=False)
 
 class Item(models.Model):
 	name=models.CharField(max_length=255,null=False,blank=False)
 	fk_subcategory=models.ForeignKey('Subcategory')
 	price=models.FloatField(default=0.0)
-	featureimage = models.FileField(upload_to='media/item_images',blank=True,null=True)
+	featureimage = models.FileField(upload_to='item_images/',blank=True,null=True)
 	description = models.TextField()
-	is_active=models.BooleanField(default=False)
+	is_active=models.BooleanField(default=True)
 
 
 

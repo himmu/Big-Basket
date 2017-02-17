@@ -1,10 +1,28 @@
+<div class="heading">
+    <h2 class="text-info">View Items</h2>
+    <hr>
+</div>
+
+<div class="toaster_position">
+	<toaster-container toaster-options="{'time-out': 10000}"></toaster-container>
+</div>
+
 <table ng-table="tableParams" class="table table-striped" show-filter="true" ng-init="viewitemInit()">
-    <tr ng-repeat="user in $data">
+    <tr ng-repeat="item in $data">
+        <td title="'Thumbnail'">
+
+        	<img class="small_image_thumbnail img-responsive" src="{$media_url$}{$ item.image $}"> </td>
         <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
-            {$ user.name $}</td>
-        <td title="'Age'" filter="{ age: 'number'}" sortable="'age'">
-            {$ user.age $}</td>
-           <td title="'Sex'" filter="{ sex: 'text'}" sortable="'sex'">
-            {$ user.age $}</td>
+            {$ item.name $}</td>
+         <td title="'Price'" filter="{ price: 'text'}" sortable="'price'">
+            {$ item.price $}</td>
+         <td title="'Description'"><textarea class="form-control" style="height: 30px;">{$item.description$}</textarea></td>
+
+         <td title="'Action'">
+         	
+         	<button class="btn btn-primary" ng-click="edit_item(item)">Edit</button>
+         	<button class="btn btn-danger" ng-click="delete_item(item)">Delete</button>
+         </td>
+
     </tr>
 </table>

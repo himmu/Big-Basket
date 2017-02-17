@@ -1,20 +1,19 @@
-<div class="heading">
+<div class="heading" ng-init="init_subcategory()">
 	<h2 class="text-info">Add Sub-category</h2>
 	<hr>
 </div>
-
+<div class="toaster_position">
+	<toaster-container toaster-options="{'time-out': 10000}"></toaster-container>
+</div> 
 
 <div class="card1 col-lg-5">
 	<div ng-form name="category_form" class="col-lg-12">
 
 		<div class="form-group col-lg-12">
 		    <label for="category" class="text-primary">Category</label>
-		    <select class="form-control" id="category" name="category" ng-model="category" required>
-			    <option>1</option>
-			    <option>2</option>
-			    <option>3</option>
-			    <option>4</option>
-			    <option>5</option>
+		    <select ng-options="cat as cat.category_name for cat in category track by cat.id" class="form-control" id="category" name="category" ng-model="category1" required >
+			    <!-- <option ng-option="cat in category track by cat.id">{$ cat.category_name $}</option> -->
+			   
 		    </select>
 
 		    <div class="error_message" ng-messages="category_form.category.$error" ng-if="category_form.category.$touched">
@@ -33,7 +32,7 @@
 
 	    
 	    <div style="padding-left:4%;padding-right:4%">
-	    	<button type="button" class="btn btn-primary" ng-disabled="category_form.$invalid" style="width:100%">Add Sub-Category</button>
+	    	<button ng-click="add_subcategory(category_form)" type="button" class="btn btn-primary" ng-disabled="category_form.$invalid" style="width:100%">Add Sub-Category</button>
 	    </div>  
 	</div>
 </div><!-- Card -->

@@ -1,5 +1,5 @@
-<div class="heading" ng-init="init_add_item()">
-	<h2 class="text-info">Add Items</h2>
+<div class="heading" ng-init="init_edit_item()">
+	<h2 class="text-info">Edit Items</h2>
 	<hr>
 </div>
 <div class="toaster_position">
@@ -9,12 +9,10 @@
 <div class="card1 col-lg-5">
 	<div ng-form name="category_form" class="col-lg-12">
 
-		<div class="form-group col-lg-12" ng-class="{'has-success':category_form.$valid}">
+		<!-- <div class="form-group col-lg-12" ng-class="{'has-success':category_form.$valid}">
 		    <label for="category" class="text-primary">Category</label>
-		    <select  ng-options="cat as cat.category_name for cat in category track by cat.id" class="form-control" id="category" name="category" ng-model="category1" required ng-change="get_subcategories(category_form)">
-			   
-		    </select>
-
+		    <select  ng-options="cat.category_name for cat in category track by cat.id" class="form-control" id="category" name="category" ng-model="category1" required ng-change="get_subcategories(category_form)" ng-selected="item_detail[0].category_obj==cat.id"></select>
+		    {$ item_detail[0].category_obj $}
 		    <div class="error_message" ng-messages="category_form.category.$error" ng-if="category_form.category.$touched">
 				<div ng-message="required" >This field is required</div>
 			</div>
@@ -29,7 +27,7 @@
 		    <div class="error_message" ng-messages="category_form.subcategory.$error" ng-if="category_form.subcategory.$touched">
 				<div ng-message="required" >This field is required</div>
 			</div>
-	  </div>
+	  </div> -->
 
 
 		<div class="form-group col-lg-12" ng-class="{'has-success':category_form.$valid}">
@@ -57,7 +55,7 @@
 			</div>
 	    </div>
 
-	    <div class="form-group col-lg-12" >
+	    <div class="form-group col-lg-9" >
 			<label for="featureimage" class="text-primary">Item image</label>
 		    <input type="file" class="form-control" ng-model="image" name="image" id="featureimage">
 		    <div class="error_message" ng-messages="category_form.image.$error" ng-if="category_form.image.$touched">
@@ -65,9 +63,13 @@
 			</div>
 	    </div>
 
+	    <div class="col-lg-3" >
+			<img src="{$ media_url $}{$ image $}" class="small_image_thumbnail img-responsive" style="float:right">
+	    </div>
+
 	    
 	    <div style="padding-left:4%;padding-right:4%">
-	    	<button ng-click="add_item(category_form)" type="button" class="btn btn-primary" ng-disabled="category_form.$invalid" style="width:100%">Add Sub-Category</button>
+	    	<button ng-click="update_item(category_form)" type="button" class="btn btn-primary" ng-disabled="category_form.$invalid" style="width:100%">Add Sub-Category</button>
 	    </div>  
 	</div>
 </div><!-- Card -->

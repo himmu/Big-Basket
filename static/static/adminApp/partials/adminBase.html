@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top" ng-controller="headerCtrl">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -12,8 +12,14 @@
         <div id="navbar" class="navbar-collapse collapse">
          
           <ul class="nav navbar-nav navbar-right">
+          	<li class="dropdown pull-right">
+              <a  data-toggle="dropdown" class="dropdown-toggle">{$ username $} <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li ng-click="logout()"><a ng-click="logout()">Logout</a></li>
+                </ul>
+          	</li>
         
-            <li class=""><a href="">Logout <span class="sr-only">(current)</span></a></li>
+            
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -28,17 +34,18 @@
 	  
 	            <ul id="menu-content" class="menu-content collapse out">
 	                <li>
-	                  <a href="#">
-	                  <i class="fa fa-dashboard fa-lg"></i> Dashboard
+	                  <a ui-sref="base.viewitems">
+	                  <i class="fa fa-dashboard fa-lg"></i>View Items
 	                  </a>
 	                </li>
 
 	                <li  data-toggle="collapse" data-target="#products" class="collapsed active">
-	                  	<a href="#"><i class="fa fa-gift fa-lg"></i> Manage Items <span class="arrow"></span></a>
+	                  	<a ><i class="fa fa-gift fa-lg"></i> Manage Items <span class="arrow"></span></a>
 	                </li>
 	                <ul class="sub-menu collapse" id="products">
-	                    <li class="active"><a href="#">Add Item</a></li>
-	                    <li><a href="#">View Items</a></li>
+	                    <li class="active" ui-sref="base.addcategory"><a ui-sref="base.addcategory">Add Category</a></li>
+	                    <li ui-sref="base.addsubcategory"><a ui-sref="base.addsubcategory">Add Sub Category</a></li>
+	                    <li ui-sref="base.additems"><a ui-sref="base.additems">Add Item</a></li>
 	                </ul>
 	            </ul>
 	     </div>

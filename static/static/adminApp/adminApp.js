@@ -1,6 +1,8 @@
-var adminApp = angular.module('admin_app',['ui.router','ngMessages','ngTable'])
+var adminApp = angular.module('admin_app',['ui.router','ngMessages','ngTable','toaster','ngAnimate',])
 
-
+.constant('urls',{
+    BASE_API:"http://localhost:8002"
+})
 
 .config(function ($interpolateProvider) {
     $interpolateProvider.startSymbol('{$');
@@ -35,12 +37,13 @@ var adminApp = angular.module('admin_app',['ui.router','ngMessages','ngTable'])
                 }
             };
         }]);
-
+ 
         $stateProvider
 
         	.state('base',{
         		templateUrl:'/static/adminApp/partials/adminBase.html',
-        		Abstract:true
+        		Abstract:true,
+                controller:'headerCtrl'
         	})
             .state('login', {
                 url: '/login',
@@ -52,8 +55,8 @@ var adminApp = angular.module('admin_app',['ui.router','ngMessages','ngTable'])
 
             .state('base.dashboard', {
                 url: '/dashboard',
-                templateUrl: '/static/adminApp/partials/adminDashboard.html',
-                controller: 'adminDashboardCtrl',
+                templateUrl: '/static/adminApp/partials/adminViewItem.html',
+                controller: 'adminViewItemCtrl',
             })
 
             .state('base.addcategory', {
@@ -80,9 +83,23 @@ var adminApp = angular.module('admin_app',['ui.router','ngMessages','ngTable'])
                 controller: 'adminViewItemCtrl',
             })
 
+            .state('base.edititems', {
+                url: '/edit-items/{item_id}',
+                templateUrl: '/static/adminApp/partials/adminEditItem.html',
+                controller: 'adminEditItemCtrl',
+                params:{
+                    'item_id':null
+                }
+            })
+
 
             $urlRouterProvider.otherwise('login')
 
 
 
     });
+
+adminApp.run(function($rootScope){
+    $rootScope.media_url = "http://localhost:8002/media/"
+})
+

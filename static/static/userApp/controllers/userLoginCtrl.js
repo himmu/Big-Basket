@@ -1,11 +1,9 @@
-/*var adminApp = angular.module('admin_app')*/
-
-adminApp.controller('adminLoginCtrl',function($scope,$http,urls,toaster,$state){
-	$scope.login_init = function(){
+userApp.controller('userLoginCtrl',function($scope,$state,$http,urls,toaster){
+		$scope.login_init = function(){
 
 		if($scope.get_payload()!=null){
-			if($scope.get_payload().role=="Admin"){
-				$state.go('base.dashboard')
+			if($scope.get_payload().role=="User"){
+				$state.go('base.item_list')
 			}
 		}else{
 			$state.go('login')
@@ -19,7 +17,7 @@ adminApp.controller('adminLoginCtrl',function($scope,$http,urls,toaster,$state){
 				var post_data={
 					"email":login_form.email.$viewValue,
 					"password":login_form.password.$viewValue,
-					"context":"Admin"
+					"context":"User"
 				}
 				$http({
 					url:urls.BASE_API+"/api/login/",
@@ -31,9 +29,9 @@ adminApp.controller('adminLoginCtrl',function($scope,$http,urls,toaster,$state){
 				}).then(function successCallback(response){
 					toaster.pop('info', "Success", response.data.message);
 					window.localStorage.setItem('token',response.data.token)
-					$state.go('base.dashboard')
+					$state.go('base.item_list')
 				},function errorCallback(response){
-					toaster.pop('error', "Success", response.data.message);
+					toaster.pop('error', "Error", response.data.message);
 				});
 			}else{
 
@@ -43,6 +41,7 @@ adminApp.controller('adminLoginCtrl',function($scope,$http,urls,toaster,$state){
 
 
 	$scope.get_payload = function(){
+
 		if(window.localStorage.getItem('token')!=undefined || window.localStorage.getItem('token')!=null){
 			var encoded = window.localStorage.getItem('token').split('.')
 			var user_detail = window.atob(encoded[1])
@@ -52,5 +51,4 @@ adminApp.controller('adminLoginCtrl',function($scope,$http,urls,toaster,$state){
 			return null
 		}
 	}
-	
-}) 
+})
