@@ -11,7 +11,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth import models as auth_models
 from django.db import models as models
 from django.http import JsonResponse
-from rest_framework import status
+# from rest_framework import status
 import uuid
 from django.contrib.auth.hashers import (
     check_password, is_password_usable, make_password,
