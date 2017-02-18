@@ -1,0 +1,1 @@
+web: gunicorn BigBasket.wsgi --log-file -
