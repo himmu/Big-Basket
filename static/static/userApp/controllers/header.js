@@ -16,6 +16,8 @@ userApp.controller('headerCtrl',function($scope,$rootScope,$state){
 		}
 	}
 	
-
-	$rootScope.username=$scope.get_payload().email
+	
+	if($scope.get_payload()!=null){
+		$rootScope.username=$scope.get_payload().email
+	}
 })
