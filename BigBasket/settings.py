@@ -89,7 +89,7 @@ WSGI_APPLICATION = 'BigBasket.wsgi.application'
 #     # }
 # }
 
-DATABASES['default'] = dj_database_url.parse('postgres://uzrdugdzjqmhir:4ed2b288e4c7150f85611d5f919ab6948b2809b082dfb624cfed5b73af4447fd@ec2-54-235-84-244.compute-1.amazonaws.com:5432/d5j21qulhv2f1s', conn_max_age=600)
+DATABASES['default'] = dj_database_url.parse('postgres://uzrdugdzjqmhir:4ed2b288e4c7150f85611d5f919ab6948b2809b082dfb624cfed5b73af4447fd@ec2-54-235-84-244.compute-1.amazonaws.com:5432/d5j21qulhv2f1s')
 
 
 AUTH_USER_MODEL = 'BigBasketApp.User'
