@@ -1,6 +1,10 @@
 userApp.controller('userLoginCtrl',function($scope,$state,$http,urls,toaster){
 		$scope.login_init = function(){
 
+		if(window.localStorage.getItem('token')==null||window.localStorage.getItem('token')==undefined){
+			$state.go('login')
+		}
+
 		if($scope.get_payload()!=null){
 			if($scope.get_payload().role=="User"){
 				$state.go('base.item_list')
