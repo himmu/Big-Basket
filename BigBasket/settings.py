@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'BigBasket.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'postgres://uzrdugdzjqmhir:4ed2b288e4c7150f85611d5f919ab6948b2809b082dfb624cfed5b73af4447fd@ec2-54-235-84-244.compute-1.amazonaws.com:5432/d5j21qulhv2f1s',                      # Or path to database file if using sqlite3.
         'USER': 'root',                      # Not used with sqlite3.
         'PASSWORD': 'root',                  # Not used with sqlite3.
