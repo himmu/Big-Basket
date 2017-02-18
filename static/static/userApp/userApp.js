@@ -2,7 +2,7 @@ var userApp = angular.module('user_app',['ui.router','ngMessages','ngTable','toa
 
 
 .constant('urls',{
-    BASE_API:"http://localhost:8002"
+    BASE_API:"https://bigbasket-demo.herokuapp.com"
 })
 
 .config(function ($interpolateProvider) {
@@ -75,5 +75,5 @@ var userApp = angular.module('user_app',['ui.router','ngMessages','ngTable','toa
     });
 
 userApp.run(function($rootScope){
-    $rootScope.media_url = "http://localhost:8002/media/"
+    $rootScope.media_url = "https://bigbasket-demo.herokuapp.com/media/"
 })

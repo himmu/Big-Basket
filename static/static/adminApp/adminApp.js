@@ -1,7 +1,7 @@
 var adminApp = angular.module('admin_app',['ui.router','ngMessages','ngTable','toaster','ngAnimate',])
 
 .constant('urls',{
-    BASE_API:"http://localhost:8002"
+    BASE_API:"https://bigbasket-demo.herokuapp.com"
 })
 
 .config(function ($interpolateProvider) {
@@ -100,6 +100,6 @@ var adminApp = angular.module('admin_app',['ui.router','ngMessages','ngTable','t
     });
 
 adminApp.run(function($rootScope){
-    $rootScope.media_url = "http://localhost:8002/media/"
+    $rootScope.media_url = "https://bigbasket-demo.herokuapp.com/media/"
 })
 
