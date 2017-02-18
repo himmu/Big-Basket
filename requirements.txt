@@ -10,5 +10,5 @@ bleach==1.4.3
 psycopg2==2.6.1
 whitenoise==3.2
 pyjwt
-whitenoise
+
 
